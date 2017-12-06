@@ -238,15 +238,6 @@ class WebSocketConnector:
         else:
             log.error("Cannot send payload! Connection not established!")
 
-    def pass_up(self, data, recv_at):
-        """Pass data up to the client via the internal Queue().
-
-        :param data: data to be passed up
-        :param recv_at: float, time of reception
-        :return:
-        """
-        self.q.put(data, recv_at)
-
     def recv(self, block=True, timeout=None):
         """Wrap for self.q.get().
 
