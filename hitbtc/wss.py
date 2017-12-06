@@ -161,7 +161,6 @@ class WebSocketConnector:
         finally:
             # We've received data, reset timers
             self._start_timer()
-        self.pass_up(data, received_at)
 
     def _on_close(self, ws, *args):
         """Log the close and stop the time-out countdown.
