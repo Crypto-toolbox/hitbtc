@@ -137,30 +137,9 @@ class WebSocketConnector:
         """Run the main method of thread."""
         self._connect()
 
-    def _on_message(self, ws, message):
-        """Handle and pass received data to the appropriate handlers.
-
-        Resets timers for time-out countdown and logs exceptions during parsing.
-
-        All messages are time-stamped
-
-        :param ws: Websocket obj
-        :param message: received data as bytes
-        :return:
-        """
-        self._stop_timer()
-
-        raw, received_at = message, time.time()
-
-        try:
-            data = json.loads(raw)
-        except json.JSONDecodeError as e:
-            # Something wrong with this data, log and discard
-            self.log.exception("Exception %s for data %s; Discarding..", e, raw)
-            return
-        finally:
-            # We've received data, reset timers
-            self._start_timer()
+    def _on_message(self, ws, data):
+        """Raise error if this wasnt implemented."""
+        raise NotImplementedError
 
     def _on_close(self, ws, *args):
         """Log the close and stop the time-out countdown.
@@ -187,11 +166,6 @@ class WebSocketConnector:
         self.log.info("Connection opened")
         self._is_connected = True
         self._start_timer()
-        if self.reconnect_required:
-            self.log.info("Reconnection successful, re-subscribing to"
-                          "channels..")
-            for cmd in self.history:
-                self.send(cmd)
 
     def _on_error(self, ws, error):
         """Log the error, reset the self._is_connected flag and issue a reconnect.
