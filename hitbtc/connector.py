@@ -49,23 +49,9 @@ class HitBTCConnector(WebSocketConnectorThread):
         if not self.silent:
             print(msg)
 
-    def _start_timers(self):
-        """Reset and start timers for API connection."""
-        self._stop_timers()
-
-        # Automatically reconnect if we didnt receive data
-        self.connection_timer = Timer(self.connection_timeout,
-                                      self._connection_timed_out)
-        self.connection_timer.start()
-
-    def _stop_timers(self):
-        """Stop connection timer."""
-        if self.connection_timer:
-            self.connection_timer.cancel()
-
     def _on_message(self, ws, message):
         """Handle and pass received data to the appropriate handlers."""
-
+        self._stop_timer()
         if not self.raw:
             decoded_message = json.loads(message)
             if 'jsonrpc' in decoded_message:
@@ -83,6 +69,7 @@ class HitBTCConnector(WebSocketConnectorThread):
                     self._handle_stream(method, symbol, params)
         else:
             self.put(message)
+        self._start_timer()
 
     def _handle_response(self, response):
         """
