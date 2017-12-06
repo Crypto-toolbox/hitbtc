@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>HitBTC Websocket API Client Code Reference &mdash; HitBTC Websocket Client 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="HitBTC Websocket Client 1.0.0 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to HitBTC Websocket Client’s documentation!" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-hitbtc">
+<span id="hitbtc-websocket-api-client-code-reference"></span><h1>HitBTC Websocket API Client Code Reference<a class="headerlink" href="#module-hitbtc" title="Permalink to this headline">¶</a></h1>
+<p>HitBTC WSS API V2.0 Client.</p>
+</div>
+<div class="section" id="the-client-object">
+<h1>The Client Object<a class="headerlink" href="#the-client-object" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="hitbtc.client.HitBTC">
+<em class="property">class </em><code class="descclassname">hitbtc.client.</code><code class="descname">HitBTC</code><span class="sig-paren">(</span><em>key=None</em>, <em>secret=None</em>, <em>raw=None</em>, <em>stdout_only=False</em>, <em>silent=False</em>, <em>url=None</em>, <em>**conn_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC" title="Permalink to this definition">¶</a></dt>
+<dd><p>HitBTC Websocket API Client class.</p>
+<p>Programmed using the official API documentation as a reference.</p>
+<dl class="docutils">
+<dt>Documentation can be found here:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#socket-api-reference">https://api.hitbtc.com/?python#socket-api-reference</a></dd>
+</dl>
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.cancel_order">
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.cancel_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel an order via Websocket.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#cancel-order">https://api.hitbtc.com/?python#cancel-order</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hitbtc.client.HitBTC.credentials_given">
+<code class="descname">credentials_given</code><a class="headerlink" href="#hitbtc.client.HitBTC.credentials_given" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert if credentials are complete.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.login">
+<code class="descname">login</code><span class="sig-paren">(</span><em>key=None</em>, <em>secret=None</em>, <em>basic=None</em>, <em>custom_nonce=None</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Login using the WSS API.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#socket-session-authentication">https://api.hitbtc.com/?python#socket-session-authentication</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.place_order">
+<code class="descname">place_order</code><span class="sig-paren">(</span><em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.place_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place a new order via Websocket.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#place-new-order">https://api.hitbtc.com/?python#place-new-order</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.replace_order">
+<code class="descname">replace_order</code><span class="sig-paren">(</span><em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.replace_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace an existing order via Websocket.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#cancel-replace-orders">https://api.hitbtc.com/?python#cancel-replace-orders</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.request_active_orders">
+<code class="descname">request_active_orders</code><span class="sig-paren">(</span><em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.request_active_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request your account&#8217;s active orders.</p>
+<p>This requires you to be logged-in! Call <code class="docutils literal"><span class="pre">login()</span></code> first!</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#get-active-orders-2">https://api.hitbtc.com/?python#get-active-orders-2</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.request_balance">
+<code class="descname">request_balance</code><span class="sig-paren">(</span><em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.request_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request your account&#8217;s balance.</p>
+<p>This requires you to be logged-in! Call <code class="docutils literal"><span class="pre">login()</span></code> first.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#get-trading-balance">https://api.hitbtc.com/?python#get-trading-balance</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.request_currencies">
+<code class="descname">request_currencies</code><span class="sig-paren">(</span><em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.request_currencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request currencies currently listed at HitBTC.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#get-currencies">https://api.hitbtc.com/?python#get-currencies</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.request_symbols">
+<code class="descname">request_symbols</code><span class="sig-paren">(</span><em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.request_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request symbols currently traded at HitBTC.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#get-symbols">https://api.hitbtc.com/?python#get-symbols</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.request_trades">
+<code class="descname">request_trades</code><span class="sig-paren">(</span><em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.request_trades" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request trades executed at HitBTC.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#get-trades">https://api.hitbtc.com/?python#get-trades</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the websocket connection.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop the websocket connection.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.subscribe_book">
+<code class="descname">subscribe_book</code><span class="sig-paren">(</span><em>cancel=False</em>, <em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.subscribe_book" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a stream for order book data.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#subscribe-to-orderbook">https://api.hitbtc.com/?python#subscribe-to-orderbook</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.subscribe_candles">
+<code class="descname">subscribe_candles</code><span class="sig-paren">(</span><em>cancel=False</em>, <em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.subscribe_candles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a stream for candle data.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#subscribe-to-candles">https://api.hitbtc.com/?python#subscribe-to-candles</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.subscribe_reports">
+<code class="descname">subscribe_reports</code><span class="sig-paren">(</span><em>cancel=False</em>, <em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.subscribe_reports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a stream of your account&#8217;s order activities.</p>
+<p>This requires you to be logged-in! Call <code class="docutils literal"><span class="pre">HitBTC.login()</span></code> first!</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#subscribe-to-reports">https://api.hitbtc.com/?python#subscribe-to-reports</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.subscribe_ticker">
+<code class="descname">subscribe_ticker</code><span class="sig-paren">(</span><em>cancel=False</em>, <em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.subscribe_ticker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a stream for ticker data.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#subscribe-to-ticker">https://api.hitbtc.com/?python#subscribe-to-ticker</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.client.HitBTC.subscribe_trades">
+<code class="descname">subscribe_trades</code><span class="sig-paren">(</span><em>cancel=False</em>, <em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.client.HitBTC.subscribe_trades" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a stream for trade data.</p>
+<dl class="docutils">
+<dt>Offical Endpoint Documentation:</dt>
+<dd><a class="reference external" href="https://api.hitbtc.com/?python#subscribe-to-trades">https://api.hitbtc.com/?python#subscribe-to-trades</a></dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="the-connector-object">
+<h1>The Connector Object<a class="headerlink" href="#the-connector-object" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="hitbtc.connector.HitBTCConnector">
+<em class="property">class </em><code class="descclassname">hitbtc.connector.</code><code class="descname">HitBTCConnector</code><span class="sig-paren">(</span><em>url=None</em>, <em>raw=None</em>, <em>stdout_only=False</em>, <em>silent=False</em>, <em>**conn_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.connector.HitBTCConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to pre-process HitBTC data, before putting it on the internal queue.</p>
+<dl class="docutils">
+<dt>Data on the queue is available as a 3-item-tuple by default:</dt>
+<dd>symbol, data_type, data</dd>
+</dl>
+<p>Whereas data can either be the extracted <code class="docutils literal"><span class="pre">params</span></code> data from a streamed notification object, or
+a tuple of <code class="docutils literal"><span class="pre">(request,</span> <span class="pre">response)</span></code>, where <code class="docutils literal"><span class="pre">request</span></code> is the original payload sent by the
+client and <code class="docutils literal"><span class="pre">response</span></code> the related response object from the server.</p>
+<p>You can disable extraction and handling by passing &#8216;raw=True&#8217; on instantiation. Note that this
+will also turn off recording of sent requests, as well all logging activity.</p>
+<dl class="method">
+<dt id="hitbtc.connector.HitBTCConnector.authenticate">
+<code class="descname">authenticate</code><span class="sig-paren">(</span><em>key</em>, <em>secret</em>, <em>basic=False</em>, <em>custom_nonce=None</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.connector.HitBTCConnector.authenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Login to the HitBTC Websocket API using the given public and secret API keys.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.connector.HitBTCConnector.echo">
+<code class="descname">echo</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.connector.HitBTCConnector.echo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print message to stdout if <code class="docutils literal"><span class="pre">silent</span></code> isn&#8217;t True.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.connector.HitBTCConnector.put">
+<code class="descname">put</code><span class="sig-paren">(</span><em>item</em>, <em>block=False</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.connector.HitBTCConnector.put" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place the given item on the internal q.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.connector.HitBTCConnector.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>method</em>, <em>custom_id=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.connector.HitBTCConnector.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the given Payload to the API via the websocket connection.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>method</strong> &#8211; JSONRPC method to call</li>
+<li><strong>custom_id</strong> &#8211; custom ID to identify response messages relating to this request</li>
+<li><strong>kwargs</strong> &#8211; payload parameters as key=value pairs</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="the-websocket-app-object">
+<h1>The Websocket APP Object<a class="headerlink" href="#the-websocket-app-object" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="hitbtc.wss.WebSocketConnector">
+<em class="property">class </em><code class="descclassname">hitbtc.wss.</code><code class="descname">WebSocketConnector</code><span class="sig-paren">(</span><em>url</em>, <em>timeout=None</em>, <em>q_maxsize=None</em>, <em>reconnect_interval=None</em>, <em>log_level=None</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Websocket Connection Thread.</p>
+<p>Inspired heavily by ekulyk&#8217;s PythonPusherClient Connection Class
+<a class="reference external" href="https://github.com/ekulyk/PythonPusherClient/blob/master/pusherclient/connection.py">https://github.com/ekulyk/PythonPusherClient/blob/master/pusherclient/connection.py</a></p>
+<p>Data received is available by calling WebSocketConnection.recv()</p>
+<dl class="method">
+<dt id="hitbtc.wss.WebSocketConnector.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnector.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnect from the websocket connection and joins the Thread.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.wss.WebSocketConnector.pass_up">
+<code class="descname">pass_up</code><span class="sig-paren">(</span><em>data</em>, <em>recv_at</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnector.pass_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pass data up to the client via the internal Queue().</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> &#8211; data to be passed up</li>
+<li><strong>recv_at</strong> &#8211; float, time of reception</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.wss.WebSocketConnector.reconnect">
+<code class="descname">reconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnector.reconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Issue a reconnection by setting the reconnect_required event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.wss.WebSocketConnector.recv">
+<code class="descname">recv</code><span class="sig-paren">(</span><em>block=True</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnector.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap for self.q.get().</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>block</strong> &#8211; Whether or not to make the call to this method block</li>
+<li><strong>timeout</strong> &#8211; Value in seconds which determines a timeout for get()</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.wss.WebSocketConnector.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnector.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the main method of thread.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.wss.WebSocketConnector.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnector.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the given Payload to the API via the websocket connection.</p>
+<p>Furthermore adds the sent payload to self.history.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; data to be sent</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hitbtc.wss.WebSocketConnector.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnector.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap around disconnect().</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hitbtc.wss.WebSocketConnectorThread">
+<em class="property">class </em><code class="descclassname">hitbtc.wss.</code><code class="descname">WebSocketConnectorThread</code><span class="sig-paren">(</span><em>url</em>, <em>timeout=None</em>, <em>q_maxsize=None</em>, <em>reconnect_interval=None</em>, <em>log_level=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnectorThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thread-based WebsocketConnector.</p>
+<dl class="method">
+<dt id="hitbtc.wss.WebSocketConnectorThread.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hitbtc.wss.WebSocketConnectorThread.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnect from the websocket and join thread.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HitBTC Websocket API Client Code Reference</a></li>
+<li><a class="reference internal" href="#the-client-object">The Client Object</a></li>
+<li><a class="reference internal" href="#the-connector-object">The Connector Object</a></li>
+<li><a class="reference internal" href="#the-websocket-app-object">The Websocket APP Object</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to HitBTC Websocket Client&#8217;s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/reference.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Nils Diefenbach.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/reference.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
