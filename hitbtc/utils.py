@@ -3,7 +3,7 @@ Message templates to log when handling responses to requests that are SUCCESFUL.
 Failed requests are logged using the error code contained in the response and its related message.
 """
 resp_get_currency = '{currency}:\n' \
-               '\t{fullname}({id}):' \
+               '\t{fullName}({id}):' \
                '\tIs a cryptocurrency: {crypto}\n' \
                '\tDeposits available: {payinEnabled}\n' \
                '\tpayinPaymentId available: {payinPaymentId}\n' \
