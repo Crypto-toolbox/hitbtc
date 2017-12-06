@@ -15,9 +15,6 @@ import ssl
 # Import Third-Party
 import websocket
 
-# import Third-party
-from pysher import Pusher
-
 # Import home-grown
 
 # Init Logging Facilities
