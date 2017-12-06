@@ -181,6 +181,9 @@ class HitBTCConnector(WebSocketConnectorThread):
         :param custom_id: custom ID to identify response messages relating to this request
         :param kwargs: payload parameters as key=value pairs
         """
+        if not self._is_connected:
+            self.echo("Cannot Send payload - Connection not established!")
+            return
         payload = {'method': method, 'params': params, 'id': custom_id or int(10000 * time.time())}
         if not self.raw:
             self.requests[payload['id']] = payload
