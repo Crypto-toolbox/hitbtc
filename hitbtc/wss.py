@@ -22,7 +22,10 @@ log = logging.getLogger(__name__)
 
 
 class WebSocketConnector:
-    """Websocket Connection Thread.
+    """Websocket Connection Object.
+
+    Handles the gritty low-level details of the API connection, such as connecting, checking for
+    timeouts and reconnecting if required, as well as sending messages.
 
     Inspired heavily by ekulyk's PythonPusherClient Connection Class
     https://github.com/ekulyk/PythonPusherClient/blob/master/pusherclient/connection.py

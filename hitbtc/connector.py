@@ -17,6 +17,9 @@ log = logging.getLogger(__name__)
 class HitBTCConnector(WebSocketConnectorThread):
     """Class to pre-process HitBTC data, before putting it on the internal queue.
 
+    It handles the API specifics, such as message parsing, data extraction and Request-Response
+    tracking.
+
     Data on the queue is available as a 3-item-tuple by default:
         symbol, data_type, data
 
