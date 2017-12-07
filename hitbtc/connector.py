@@ -5,7 +5,6 @@ import time
 import json
 import hmac
 import hashlib
-from threading import Timer
 from collections import defaultdict
 
 from hitbtc.wss import WebSocketConnectorThread
@@ -80,6 +79,9 @@ class HitBTCConnector(WebSocketConnectorThread):
 
         Acts as a pre-sorting function and determines whether or not the response is an error
         message, or a response to a succesful request.
+
+        :param response: data received via WSS API, as passed by
+                         :meth:`hitbtc.connector._on_message`
         """
         try:
             i_d = response['id']
@@ -108,6 +110,10 @@ class HitBTCConnector(WebSocketConnectorThread):
 
         Finally, we'll put the response and its corresponding request on the internal queue for
         retrieval by the client.
+        :param request: request payload sent by the client and stored
+                        in :attr:`hitbtc.connector.requests`
+        :param response: data received via WSS API, as passed by
+                         :meth:`hitbtc.connector._on_message`
         """
         method = request['method']
 
@@ -152,6 +158,11 @@ class HitBTCConnector(WebSocketConnectorThread):
 
         Finally, we'll put the response and its corresponding request on the internal queue for
         retrieval by the client.
+
+        :param request: request payload sent by the client and stored
+                        in :attr:`hitbtc.connector.requests`
+        :param response: data received via WSS API, as passed by
+                         :meth:`hitbtc.connector._on_message`
         """
         err_message = "{code} - {message} - {description}!".format(response['error'])
         err_message += " Related Request: %r" % request
@@ -169,7 +180,7 @@ class HitBTCConnector(WebSocketConnectorThread):
 
         :param method: JSONRPC method to call
         :param custom_id: custom ID to identify response messages relating to this request
-        :param kwargs: payload parameters as key=value pairs
+        :param params: payload parameters as key=value keyword arguments
         """
         if not self._is_connected:
             self.echo("Cannot Send payload - Connection not established!")
@@ -181,7 +192,18 @@ class HitBTCConnector(WebSocketConnectorThread):
         self.conn.send(json.dumps(payload))
 
     def authenticate(self, key, secret, basic=False, custom_nonce=None):
-        """Login to the HitBTC Websocket API using the given public and secret API keys."""
+        """
+        Login to the HitBTC Websocket API using the given public and secret API keys.
+
+        Offical Endpoint Documentation:
+            https://api.hitbtc.com/?python#socket-session-authentication
+
+        :param key: API Key, as generated on your HitBTC Account's API Key page.
+        :param secret: API Secret, as generated on your HitBTC Account's API Key page.
+        :param basic: Bool, ``True`` uses the ``Basic`` algorithm, ``False`` causes the method to
+                      use a SHA256 encoded signature, in addition to API key and secret.
+        :param custom_nonce: str, optional custom nonce string used to generation of signature
+        """
         if basic:
             algo = 'BASIC'
             skey = secret
