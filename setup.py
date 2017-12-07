@@ -1,6 +1,6 @@
 from setuptools import setup
 
-VERSION = '1.0.2dev0'
+VERSION = '1.0.2dev1'
 
 setup(name='hitbtc',
       version=VERSION,
