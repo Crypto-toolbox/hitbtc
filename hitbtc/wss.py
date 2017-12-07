@@ -102,12 +102,21 @@ class WebSocketConnector:
             self.conn.close()
 
     def reconnect(self):
-        """Issue a reconnection by setting the reconnect_required event."""
-        # Reconnect attempt at self.reconnect_interval
+        """
+        Issue a reconnection by setting the reconnect_required event.
+
+        Upon reconnection, send payloads contained in :attr:`hitbtc.wss.WebSocketConnection.history`
+        """
         self.reconnect_required = True
         self._is_connected = False
         if self.conn:
             self.conn.close()
+        if self.history:
+            while not self._is_connected:
+                time.sleep(0.5)
+            history, self.history = self.history, []
+            for payload in self.history:
+                self.send(payload)
 
     def _connect(self):
         """Create a websocket connection.
@@ -209,7 +218,8 @@ class WebSocketConnector:
         """
         if self._is_connected:
             payload = json.dumps(data)
-            self.history.append(data)
+            if 'subscribe' in data['method'] or 'login' == data['method']:
+                self.history.append(data)
             self.conn.send(payload)
         else:
             log.error("Cannot send payload! Connection not established!")
