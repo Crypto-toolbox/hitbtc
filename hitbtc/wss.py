@@ -153,6 +153,7 @@ class WebSocketConnector:
         :param *args: additional arguments
         """
         self.log.info("Connection closed")
+        self._is_connected = False
         self._stop_timer()
 
     def _on_open(self, ws):
@@ -205,7 +206,6 @@ class WebSocketConnector:
         Furthermore adds the sent payload to self.history.
 
         :param data: data to be sent
-        :return:
         """
         if self._is_connected:
             payload = json.dumps(data)
