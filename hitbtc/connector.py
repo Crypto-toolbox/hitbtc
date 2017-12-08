@@ -172,6 +172,7 @@ class HitBTCConnector(WebSocketConnectorThread):
 
     def _handle_stream(self, method, symbol, params):
         """Handle streamed data."""
+        self.echo("{} ({}): {}".format(method, symbol, params))
         self.put((method, symbol, params))
 
     def send(self, method, custom_id=None, **params):
