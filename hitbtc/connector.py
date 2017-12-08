@@ -123,10 +123,10 @@ class HitBTCConnector(WebSocketConnectorThread):
             log.exception(e)
             log.error("Response's method %s is unknown to the client! %s", method)
             return
-
+        print(request)
         if method.startswith('subscribe'):
-            if 'symbol' in response['params']:
-                formatted_msg = msg.format({'symbol': response['params']['symbol']})
+            if 'symbol' in request['params']:
+                formatted_msg = msg.format(symbol=request['params']['symbol'])
             else:
                 formatted_msg = msg
             self.log.info(formatted_msg)
@@ -143,7 +143,7 @@ class HitBTCConnector(WebSocketConnectorThread):
             else:
                 # Format messages for these using response['result'] directly
                 # (place, cancel, replace, getSymbol, getCurrency)
-                text += msg.format(response['result'])
+                text += msg.format(**response['result'])
                 self.log.info(text)
                 self.echo(text)
         self.log.debug("Request: %r, Response: %r", request, response)
@@ -164,7 +164,7 @@ class HitBTCConnector(WebSocketConnectorThread):
         :param response: data received via WSS API, as passed by
                          :meth:`hitbtc.connector._on_message`
         """
-        err_message = "{code} - {message} - {description}!".format(response['error'])
+        err_message = "{code} - {message} - {description}!".format(**response['error'])
         err_message += " Related Request: %r" % request
         self.log.error(err_message)
         self.echo(err_message)
