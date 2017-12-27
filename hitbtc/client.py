@@ -42,6 +42,10 @@ class HitBTC:
         self.key = key
         self.secret = secret
 
+    def recv(self, block=True, timeout=None):
+        """Retrieve data from the connector queue."""
+        self.conn.recv(block, timeout)
+
     @property
     def credentials_given(self):
         """Assert if credentials are complete."""
