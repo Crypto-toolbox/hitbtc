@@ -44,7 +44,7 @@ class HitBTC:
 
     def recv(self, block=True, timeout=None):
         """Retrieve data from the connector queue."""
-        self.conn.recv(block, timeout)
+        return self.conn.recv(block, timeout)
 
     @property
     def credentials_given(self):
