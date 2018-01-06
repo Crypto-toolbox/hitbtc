@@ -54,6 +54,7 @@ class HitBTCConnector(WebSocketConnectorThread):
     def _on_message(self, ws, message):
         """Handle and pass received data to the appropriate handlers."""
         self._stop_timer()
+
         if not self.raw:
             decoded_message = json.loads(message)
             if 'jsonrpc' in decoded_message:
