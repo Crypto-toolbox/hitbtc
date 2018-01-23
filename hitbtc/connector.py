@@ -132,7 +132,7 @@ class HitBTCConnector(WebSocketConnectorThread):
             msg = response_types[method]
         except KeyError as e:
             log.exception(e)
-            log.error("Response's method %s is unknown to the client! %s", method)
+            log.error("Response's method %s is unknown to the client! %s", method, response)
             return
         print(request)
         if method.startswith('subscribe'):
@@ -154,7 +154,10 @@ class HitBTCConnector(WebSocketConnectorThread):
             else:
                 # Format messages for these using response['result'] directly
                 # (place, cancel, replace, getSymbol, getCurrency)
-                text += msg.format(**response['result'])
+                try:
+                    text += msg.format(**response['result'])
+                except TypeError:
+                    text += msg.format(response['result'])
                 self.log.info(text)
                 self.echo(text)
         self.log.debug("Request: %r, Response: %r", request, response)
