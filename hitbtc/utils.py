@@ -59,7 +59,7 @@ resp_get_active_orders = 'Trade ID ({id}):' \
                     '\tOriginal Request Client Order ID: {originalRequestClientOrderId}\n' \
                     '\tReport type: {reportType}\n'
 
-resp_get_trading_balance = 'Wallet: {}\n' \
+resp_get_trading_balance = 'Wallet: {currency}\n' \
                       '\tAvailable: {available}\n' \
                       '\tReserved: {reserved}\n'
 
