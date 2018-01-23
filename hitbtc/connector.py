@@ -5,7 +5,7 @@ import time
 import json
 import hmac
 import hashlib
-from collections import defaultdict
+from collections import defaultdict, namedtuple
 
 from hitbtc.wss import WebSocketConnectorThread
 from hitbtc.utils import response_types
@@ -19,15 +19,21 @@ class HitBTCConnector(WebSocketConnectorThread):
     It handles the API specifics, such as message parsing, data extraction and Request-Response
     tracking.
 
-    Data on the queue is available as a 3-item-tuple by default:
-        symbol, data_type, data
+    All Data is wrapped in a namedTuple ``Data`` with the following fields:
+        Method: request method or stream channel
+        success: Bool, False indicates an error
+        Data: Data Payload
+        Dtype: ``stream`` or ``request``
 
-    Whereas data can either be the extracted ``params`` data from a streamed notification object, or
-    a tuple of ``(request, response)``, where ``request`` is the original payload sent by the
-    client and ``response`` the related response object from the server.
+    The payloads are tuples, looking as follows:
+        Symbol: The symbol data was requested for
+        Result: The resulting data
+        Request: Original request payload, None if ``dtype`` is ``stream``
+
 
     You can disable extraction and handling by passing 'raw=True' on instantiation. Note that this
-    will also turn off recording of sent requests, as well all logging activity.
+    will also turn off recording of sent requests, as well all logging activity. In this case,
+    data on the queue is a single ``str`` object.
     """
 
     def __init__(self, url=None, raw=None, stdout_only=False, silent=False, **conn_ops):
@@ -40,6 +46,7 @@ class HitBTCConnector(WebSocketConnectorThread):
         self.logged_in = False
         self.silent = silent
         self.stdout_only = stdout_only
+        self.envelope = namedtuple('Data', ['method', 'success', 'data', 'dtype'])
 
     def put(self, item, block=False, timeout=None):
         """Place the given item on the internal q."""
@@ -213,8 +220,7 @@ class HitBTCConnector(WebSocketConnectorThread):
         else:
             algo = 'HS256'
             nonce = custom_nonce or str(round(time.time() * 1000))
-            raw_sig = (key + nonce).encode(encoding='UTF-8')
-            signature = hmac.new(secret, raw_sig, hashlib.sha256).hexdigest()
+            signature = hmac.new(secret.encode('UTF-8'), nonce.encode('UTF-8'), hashlib.sha256).hexdigest()
             payload = {'nonce': nonce, 'signature': signature}
 
         payload['algo'] = algo
