@@ -154,7 +154,10 @@ class HitBTCConnector(WebSocketConnectorThread):
             else:
                 # Format messages for these using response['result'] directly
                 # (place, cancel, replace, getSymbol, getCurrency)
-                text += msg.format(**response['result'])
+                try:
+                    text += msg.format(**response['result'])
+                except TypeError:
+                    text += msg.format(response['result'])
                 self.log.info(text)
                 self.echo(text)
         self.log.debug("Request: %r, Response: %r", request, response)
