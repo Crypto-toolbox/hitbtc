@@ -148,7 +148,10 @@ class HitBTCConnector(WebSocketConnectorThread):
                 # loop over item in response['result'] for:
                 # getSymbols, getTrades, getTradingBalance, getOrders
                 for item in response['result']:
-                    text += msg.format(item)
+                    try:
+                        text += msg.format(**item)
+                    except KeyError as e :
+                        print("Formatter for method {} failed on item {} with KeyError {}... item keys {}".format(method, item, e, item.keys()))
                 self.log.info(text)
                 self.echo(text)
             else:
