@@ -132,7 +132,7 @@ class HitBTCConnector(WebSocketConnectorThread):
             msg = response_types[method]
         except KeyError as e:
             log.exception(e)
-            log.error("Response's method %s is unknown to the client! %s", method)
+            log.error("Response's method %s is unknown to the client! %s", method, response)
             return
         print(request)
         if method.startswith('subscribe'):
