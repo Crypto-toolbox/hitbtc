@@ -59,6 +59,9 @@ class HitBTC:
         """Stop the websocket connection."""
         self.conn.stop()
 
+    def is_connected(self):
+        return self.conn._is_connected
+        
     def login(self, key=None, secret=None, basic=None, custom_nonce=None):
         """
         Login using the WSS API.
