@@ -17,12 +17,17 @@ log = logging.getLogger(__name__)
 class HitBTCConnector(WebSocketConnectorThread):
     """Class to pre-process HitBTC data, before putting it on the internal queue.
 
-    Data on the queue is available as a 3-item-tuple by default:
-        symbol, data_type, data
-
-    Whereas data can either be the extracted ``params`` data from a streamed notification object, or
-    a tuple of ``(request, response)``, where ``request`` is the original payload sent by the
+    Data on the queue is available as a 3-item-tuple by default.
+    
+    Response items on the queue are formatted as:
+        ('Response', 'Success' or 'Failure', (request, response))
+    
+    'Success' indicates a successful response and 'Failure' a failed one. 
+    ``request`` is the original payload sent by the
     client and ``response`` the related response object from the server.
+    
+    Stream items on the queue are formatted as:
+        (method, symbol, params)
 
     You can disable extraction and handling by passing 'raw=True' on instantiation. Note that this
     will also turn off recording of sent requests, as well all logging activity.
@@ -65,6 +70,8 @@ class HitBTCConnector(WebSocketConnectorThread):
 
     def _on_message(self, ws, message):
         """Handle and pass received data to the appropriate handlers."""
+
+        self._stop_timer()
 
         if not self.raw:
             decoded_message = json.loads(message)
