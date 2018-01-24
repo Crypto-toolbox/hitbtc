@@ -45,66 +45,33 @@ resp_get_trades = 'Trade ID ({id}):' \
              '\tSide: {side}\n' \
              '\tTimestamp: {timestamp}\n'
 
-resp_get_active_orders = 'Trade ID ({id}):' \
-                    '\tOrder type: {type}\n' \
-                    '\tStatus: {status}\n' \
-                    '\tPrice: {price}\n' \
-                    '\tSize: {quantity}\n' \
-                    '\tSide: {side}\n' \
-                    '\tCumulative size: {cumQunatity}\n' \
-                    '\tTime in Force: {timeInForce}\n' \
-                    '\tCreated at: {timestamp}\n' \
-                    '\tUpdated at: {timestamp}\n' \
-                    '\tClient Order ID: {clientOrderId}\n' \
-                    '\tOriginal Request Client Order ID: {originalRequestClientOrderId}\n' \
-                    '\tReport type: {reportType}\n'
 
-resp_get_trading_balance = 'Wallet: {currency}\n' \
-                      '\tAvailable: {available}\n' \
-                      '\tReserved: {reserved}\n'
-
-resp_place_order = 'Successfully placed a new order via websocket!\n' \
-              '\tTrade ID ({id}):' \
-              '\t\tOrder type: {type}\n' \
-              '\t\tStatus: {status}\n' \
-              '\t\tPrice: {price}\n' \
+order_report_template = 'Trade ID ({id}): \tStatus: {status}\n' \
+              'Order type: {type}' \
+              '\t\tPrice: {price}' \
               '\t\tSize: {quantity}\n' \
-              '\t\tSide: {side}\n' \
-              '\t\tCumulative size: {cumQunatity}\n' \
-              '\t\tTime in Force: {timeInForce}\n' \
-              '\t\tCreated at: {timestamp}\n' \
-              '\t\tUpdated at: {timestamp}\n' \
-              '\t\tClient Order ID: {clientOrderId}\n' \
-              '\t\tReport type: {reportType}\n'
+              'Side: {side}\t' \
+              '\t\tCumulative size: {cumQuantity}' \
+              '\t\t\tTime in Force: {timeInForce}\n' \
+              'Created at: {createdAt}' \
+              '\t\t\t\t\tUpdated at: {updatedAt}\n' \
+              'Client Order ID: {clientOrderId}' \
+              '\t\t\t\tReport type: {reportType}'
 
-resp_cancel_order = 'Successfully cancelled an order via websocket!\n' \
-              '\tTrade ID ({id}):' \
-              '\t\tOrder type: {type}\n' \
-              '\t\tStatus: {status}\n' \
-              '\t\tPrice: {price}\n' \
-              '\t\tSize: {quantity}\n' \
-              '\t\tSide: {side}\n' \
-              '\t\tCumulative size: {cumQunatity}\n' \
-              '\t\tTime in Force: {timeInForce}\n' \
-              '\t\tCreated at: {timestamp}\n' \
-              '\t\tUpdated at: {timestamp}\n' \
-              '\t\tClient Order ID: {clientOrderId}\n' \
-              '\t\tReport type: {reportType}\n'
+original_request_clOrdID = 'Original Request Client Order ID: {originalRequestClientOrderId}'
 
-resp_cancel_replace_order = 'Successfully replaced an order via websocket!\n' \
-                       '\tTrade ID ({id}):' \
-                       '\t\tOrder type: {type}\n' \
-                       '\t\tStatus: {status}\n' \
-                       '\t\tPrice: {price}\n' \
-                       '\t\tSize: {quantity}\n' \
-                       '\t\tSide: {side}\n' \
-                       '\t\tCumulative size: {cumQunatity}\n' \
-                       '\t\tTime in Force: {timeInForce}\n' \
-                       '\t\tCreated at: {timestamp}\n' \
-                       '\t\tUpdated at: {timestamp}\n' \
-                       '\t\tClient Order ID: {clientOrderId}\n' \
-                       '\t\tOriginal Request Client Order ID: {originalRequestClientOrderId}\n' \
-                       '\t\tReport type: {reportType}\n'
+resp_get_active_orders = order_report_template + original_request_clOrdID + '\n'
+
+
+resp_get_trading_balance = 'Wallet: {currency}' \
+                      '\t\tAvailable: {available}' \
+                      '\t\tReserved: {reserved}\n'
+
+resp_place_order = 'Successfully placed a new order via websocket!\n' + order_report_template + '\n'
+
+resp_cancel_order = 'Successfully cancelled an order via websocket!\n' + order_report_template+ '\n'
+
+resp_cancel_replace_order = 'Successfully replaced an order via websocket!\n' + order_report_template + original_request_clOrdID + '\n'
 
 resp_subscribe_ticker = 'Succesfully subscribed to {symbol} ticker data!'
 resp_subscribe_book = 'Succesfully subscribed to {symbol} order book data!'
