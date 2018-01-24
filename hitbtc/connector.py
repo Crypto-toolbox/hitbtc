@@ -81,8 +81,8 @@ class HitBTCConnector(WebSocketConnectorThread):
                 else:
                     try:
                         method = decoded_message['method']
-                        symbol = decoded_message['params'].pop('symbol')
-                        params = decoded_message.pop('params')
+                        symbol = decoded_message['params']['symbol']
+                        params = decoded_message['params']
                     except Exception as e:
                         self.log.exception(e)
                         self.log.error(decoded_message)
