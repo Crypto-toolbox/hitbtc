@@ -12,7 +12,7 @@ resp_get_currency = '{currency}:\n' \
                '\tpayoutIsPaymentId available: {payoutIsPaymentId}\n' \
                '\tTransfers enabled: {transferEnabled}\n'
 
-resp_get_currencies = '{fullname}({id}):' \
+resp_get_currencies = '{fullName}({id}):' \
                  '\tIs a cryptocurrency: {crypto}\n' \
                  '\tDeposits available: {payinEnabled}\n' \
                  '\tpayinPaymentId available: {payinPaymentId}\n' \
