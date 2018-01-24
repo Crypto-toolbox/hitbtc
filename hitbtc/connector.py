@@ -145,7 +145,7 @@ class HitBTCConnector(WebSocketConnectorThread):
                 # loop over item in response['result'] for:
                 # getSymbols, getTrades, getTradingBalance, getOrders
                 for item in response['result']:
-                    text += msg.format(item)
+                    text += msg.format(**item)
                 self.log.info(text)
                 self.echo(text)
             else:
