@@ -81,8 +81,8 @@ class HitBTCConnector(WebSocketConnectorThread):
                 else:
                     try:
                         method = decoded_message['method']
-                        symbol = decoded_message['params'].pop('symbol')
-                        params = decoded_message.pop('params')
+                        symbol = decoded_message['params']['symbol']
+                        params = decoded_message['params']
                     except Exception as e:
                         self.log.exception(e)
                         self.log.error(decoded_message)
@@ -148,10 +148,12 @@ class HitBTCConnector(WebSocketConnectorThread):
                 # loop over item in response['result'] for:
                 # getSymbols, getTrades, getTradingBalance, getOrders
                 for item in response['result']:
-                    try:
-                        text += msg.format(**item)
-                    except KeyError as e :
-                        print("Formatter for method {} failed on item {} with KeyError {}... item keys {}".format(method, item, e, item.keys()))
+                    # Don't print zero balances
+                    if method is not 'getTradingBalance' or (float(item['available']) > 0 or float(item['reserved']) > 0):
+                        try:
+                            text += msg.format(**item)
+                        except KeyError as e :
+                            print("Formatter for method {} failed on item {} with KeyError {}... item keys {}".format(method, item, e, item.keys()))
                 self.log.info(text)
                 self.echo(text)
             else:
